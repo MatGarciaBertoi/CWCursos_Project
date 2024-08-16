@@ -1,0 +1,214 @@
+/* Estilos gerais para o corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte padrão */
+    margin: 0; /* Remove margem padrão */
+    padding: 0; /* Remove padding padrão */
+    background: url('imagens/background.jpg') no-repeat center center fixed; /* Define a imagem de fundo */
+    background-size: cover; /* Cobre toda a área */
+    color: white; /* Define a cor do texto */
+    min-height: 100vh; /* Define a altura mínima */
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Direção da flexbox em coluna */
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semitransparente */
+    color: white; /* Cor do texto */
+    padding: 1em 0; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilos para o menu de navegação */
+nav ul {
+    list-style: none; /* Remove marcadores */
+    padding: 0; /* Remove padding */
+}
+
+nav ul li {
+    display: inline; /* Exibe os itens em linha */
+    margin: 0 1em; /* Define margem entre os itens */
+}
+
+nav ul li a {
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+/* Estilos para a área principal */
+main {
+    flex: 1; /* Flex cresce para preencher o espaço disponível */
+    padding: 2em; /* Espaçamento interno */
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Direção da flexbox em coluna */
+    gap: 2em; /* Adiciona espaçamento entre as seções */
+}
+
+/* Estilos para os títulos */
+h2 {
+    color: #0073e6; /* Cor azul */
+}
+
+/* Estilos para os itens da FAQ */
+.faq-item {
+    background-color: white; /* Fundo branco */
+    color: black; /* Cor do texto */
+    padding: 1em; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    margin-bottom: 1em; /* Margem inferior */
+    border: 1px solid #ccc; /* Borda cinza */
+}
+
+/* Estilos para as perguntas da FAQ */
+.faq-question {
+    background: none; /* Sem fundo */
+    border: none; /* Sem borda */
+    font-size: 1.2em; /* Tamanho da fonte */
+    font-weight: bold; /* Texto em negrito */
+    text-align: left; /* Alinha o texto à esquerda */
+    width: 100%; /* Largura total */
+    padding: 0.5em 0; /* Espaçamento interno */
+    cursor: pointer; /* Cursor de ponteiro */
+    color: #0073e6; /* Cor azul */
+}
+
+/* Estilos para as respostas da FAQ */
+.faq-answer {
+    display: none; /* Esconde por padrão */
+    padding: 0.5em 0; /* Espaçamento interno */
+}
+
+/* Estilos para o formulário */
+form {
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Direção da flexbox em coluna */
+}
+
+form label {
+    margin-top: 1em; /* Margem superior */
+    color: black; /* Cor do texto */
+}
+
+form input, form textarea {
+    padding: 0.5em; /* Espaçamento interno */
+    margin-top: 0.5em; /* Margem superior */
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo branco semitransparente */
+    border: 1px solid black; /* Borda preta */
+    color: black; /* Cor do texto digitado */
+}
+
+/* Estilos para o botão do formulário */
+form button {
+    margin-top: 1em; /* Margem superior */
+    padding: 0.5em; /* Espaçamento interno */
+    background-color: #0073e6; /* Fundo azul */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Estilos para o rodapé */
+footer {
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semitransparente */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    padding: 1em 0; /* Espaçamento interno */
+}
+
+/* Estilos para a mensagem de resposta após enviar a dúvida */
+#response-message {
+    background-color: white; /* Fundo branco */
+    color: red; /* Cor do texto vermelha */
+    padding: 1em; /* Espaçamento interno */
+    margin-top: 1em; /* Margem superior */
+    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid #ccc; /* Borda cinza */
+    text-align: center; /* Centraliza o texto */
+    max-width: 400px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Estilos para o contêiner do chatbot */
+#chatbot-container {
+    position: fixed; /* Posicionamento fixo */
+    bottom: 20px; /* Alinha ao fundo */
+    right: 20px; /* Alinha à direita */
+}
+
+/* Estilos para o botão do chatbot */
+#chatbot-toggle {
+    background-color: #007bff; /* Fundo azul */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Estilos para a caixa de chat */
+#chatbox {
+    position: absolute; /* Posicionamento absoluto */
+    bottom: 50px; /* Alinha ao fundo */
+    right: 0; /* Alinha à direita */
+    width: 300px; /* Largura fixa */
+    max-height: 400px; /* Altura máxima */
+    overflow: hidden; /* Esconde o conteúdo que transborda */
+    border: 1px solid #ddd; /* Borda cinza */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    background-color: white; /* Fundo branco */
+    display: none; /* Esconde por padrão */
+}
+
+/* Classe para exibir a caixa de chat */
+#chatbox.active {
+    display: block; /* Exibe a caixa de chat */
+}
+
+/* Estilos para a área de mensagens do chat */
+#chat-messages {
+    height: 300px; /* Altura fixa */
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    padding: 10px; /* Espaçamento interno */
+}
+
+#chat-messages p {
+    margin: 0 0 10px; /* Margem inferior */
+}
+
+/* Estilos para o cabeçalho da caixa de chat */
+#chatbox-header {
+    background-color: #007bff; /* Fundo azul */
+    color: white; /* Cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    border-top-left-radius: 5px; /* Bordas arredondadas no topo esquerdo */
+    border-top-right-radius: 5px; /* Bordas arredondadas no topo direito */
+}
+
+/* Estilos para as mensagens do robô */
+.robot-message {
+    color: #007bff; /* Cor azul */
+    font-style: italic; /* Estilo itálico */
+}
+
+/* Define estilos específicos para as mensagens do usuário e do robô */
+.user-message {
+    text-align: right; /* Alinha as mensagens do usuário à direita */
+    color: rgb(0, 0, 0); /* Cor das mensagens do usuário */
+}
+
+.robot-message {
+    text-align: left; /* Alinha as mensagens do robô à esquerda */
+    color: #007bff; /* Cor das mensagens do robô */
+    font-style: italic; /* Estilo itálico */
+}
+
+/* Estilos para a mensagem inicial do chatbot */
+#initial-message {
+    margin-bottom: 20px; /* Margem inferior */
+}
+
+/* Estilos para o contêiner de seleção de tópicos */
+#topic-select-container {
+    margin-bottom: 20px; /* Margem inferior */
+}

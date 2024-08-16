@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CW Cursos - Plataforma de Cursos Online</title>
+    
+</head>
+
+<style>
+
+
+body {
+    font-family: Arial, sans-serif;/* Define a fonte padrão para o corpo da página */
+    margin: 0;/* Remove as margens padrão */
+    padding: 0;/* Remove os preenchimentos padrão */
+    color: #333;/* Define a cor do texto como cinza escuro */
+    background-color: #f4f4f4;/* Define a cor de fundo da página como um cinza claro */
+}
+
+header {
+    background-color: #333;/* Define a cor de fundo do cabeçalho como cinza escuro */
+    color: white;/* Define a cor do texto no cabeçalho como branco */
+    padding: 1rem;/* Define um preenchimento interno de 1rem */
+    text-align: center;/* Alinha o texto ao centro */
+}
+
+header h1 {
+    margin: 0;/* Remove a margem do elemento h1 no cabeçalho */
+}
+
+nav ul {
+    list-style-type: none;/* Remove os marcadores de lista */
+    margin: 0;/* Remove a margem da lista */
+    padding: 0;/* Remove o preenchimento da lista */
+    display: flex;/* Define a exibição da lista como flexível */
+    justify-content: center;/* Centraliza os itens da lista */
+}
+
+nav ul li {
+    margin: 0 1rem;/* Define margens laterais de 1rem para os itens da lista */
+}
+
+nav ul li a {
+    color: white;/* Define a cor do texto dos links como branco */
+    text-decoration: none;/* Remove a decoração de texto (sublinhado) dos links */
+}
+
+section {
+    padding: 2rem;/* Define um preenchimento interno de 2rem */
+    text-align: center;/* Alinha o texto ao centro */
+    background-color: white;/* Define a cor de fundo como branco */
+    margin: 1rem auto;/* Define margens de 1rem ao redor e centraliza a seção */
+    width: 80%;/* Define a largura da seção como 80% do contêiner pai */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* Adiciona uma sombra ao redor da seção */
+}
+
+.curso {
+    border: 1px solid #ccc;/* Define uma borda cinza clara ao redor do curso */
+    padding: 1rem;/* Define um preenchimento interno de 1rem */
+    margin: 1rem;/* Define margens de 1rem ao redor do curso */
+    cursor: pointer;/* Define o cursor como uma mão quando sobre o curso */
+    transition: transform 0.3s;/* Adiciona uma transição suave de 0.3s para transformações */
+    background-color: #f9f9f9;/* Define a cor de fundo como um cinza muito claro */
+}
+
+.curso:hover {
+    transform: scale(1.05);/* Aumenta o tamanho em 5% ao passar o mouse */
+    background-color: #e9e9f9;/* Muda a cor de fundo ao passar o mouse */
+}
+
+footer {
+    background-color: #333;/* Define a cor de fundo do rodapé como cinza escuro */
+    color: white;/* Define a cor do texto no rodapé como branco */
+    text-align: center;/* Alinha o texto ao centro */
+    padding: 1rem;/* Define um preenchimento interno de 1rem */
+    position: fixed;/* Define a posição como fixa */
+    bottom: 0;/* Posiciona o rodapé na parte inferior da página */
+    width: 100%;/* Define a largura do rodapé como 100% da janela */
+}
+
+.modal {
+    display: none;/* Inicialmente, o modal está oculto */
+    position: fixed;/* Define a posição como fixa */
+    z-index: 1;/* Define a prioridade de exibição do modal */
+    left: 0;/* Alinha o modal à esquerda */
+    top: 0;/* Alinha o modal ao topo */
+    width: 100%;/* Define a largura do modal como 100% da janela */
+    height: 100%;/* Define a altura do modal como 100% da janela */
+    overflow: auto;/* Adiciona rolagem se o conteúdo do modal for maior que a janela */
+    background-color: rgba(0, 0, 0, 0.4);/* Define um fundo semitransparente para o modal */
+}
+
+.modal-content {
+    background-color: #fefefe;/* Define a cor de fundo do conteúdo do modal como branco */
+    margin: 15% auto;/* Centraliza o conteúdo do modal verticalmente e horizontalmente */
+    padding: 20px;/* Define um preenchimento interno de 20px */
+    border: 1px solid #888;/* Define uma borda cinza ao redor do conteúdo do modal */
+    width: 80%;/* Define a largura do conteúdo do modal como 80% do contêiner pai */
+    max-width: 500px;/* Define a largura máxima do conteúdo do modal */
+}
+
+.modal-content img {
+    max-width: 100%;/* Define a largura máxima da imagem como 100% do contêiner pai */
+    height: auto;/* Ajusta a altura da imagem automaticamente */
+    margin: 1rem 0;/* Define margens verticais de 1rem para a imagem */
+}
+
+.close {
+    color: #aaa;/* Define a cor do botão de fechar como cinza claro */
+    float: right;/* Alinha o botão de fechar à direita */
+    font-size: 28px;/* Define o tamanho da fonte do botão de fechar */
+    font-weight: bold;/* Define o peso da fonte do botão de fechar como negrito */
+}
+
+.close:hover,
+.close:focus {
+    color: black;/* Muda a cor do botão de fechar para preto ao passar o mouse ou focar */
+    text-decoration: none;/* Remove a decoração de texto (sublinhado) */
+    cursor: pointer;/* Define o cursor como uma mão */
+}
+
+form {
+    display: flex;/* Define a exibição do formulário como flexível */
+    flex-direction: column;/* Define a direção dos itens flexíveis como coluna */
+    align-items: center;/* Alinha os itens do formulário ao centro */
+}
+
+form label {
+    margin-top: 10px; /* Define uma margem superior de 10px para os rótulos */
+}
+
+form input, form textarea, form button {
+    width: 100%; /* Define a largura dos inputs, textarea e botão como 100% */
+    max-width: 400px; /* Define a largura máxima como 400px */
+    padding: 10px; /* Define um preenchimento interno de 10px */
+    margin-top: 10px; /* Define uma margem superior de 10px */
+}
+
+form button {
+    background-color: #333;/* Define a cor de fundo do botão como cinza escuro */
+    color: white;/* Define a cor do texto do botão como branco */
+    border: none;/* Remove a borda do botão */
+    cursor: pointer;/* Define o cursor como uma mão */
+}
+
+form button:hover {
+    background-color: #555;
+    /* Muda a cor de fundo do botão ao passar o mouse */
+}
+</style>
+
+<body>
+    <header>
+        <h1>CW Cursos</h1>
+        
+
+        <nav>
+            <ul>
+                <!-- Navegação com uma lista não ordenada -->
+                <li><a href="#cursos">Cursos</a></li>
+                <!-- Link para a seção de cursos -->
+                <li><a href="#contato">Contato</a></li>
+                <!-- Link para a seção de contato -->
+                <li><a href="sistema.html">Voltar</a></li>
+                <!-- Link para voltar ao sistema -->
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <!-- Seção de boas-vindas com informações sobre os cursos -->
+        <h2>Bem-vindo a aba cursos da CW, aqui nos oferecemos os seguintes cursos: </h2>
+        <p>*Curso de SEO*</p>
+        <p>*Curso de Marketing de Conteúdo*</p>
+        <p>*Curso de Mídias Sociais, divulgação*</p>
+        <p>*Curso de Introdução ao MKT*</p>
+        <p>*Curso de Redes Sociais, vendas*</p>
+    </section>
+
+    <section id="cursos">
+        <!-- Seção que lista os cursos oferecidos -->
+        <h2>Nossos Cursos</h2>
+        <div class="curso" onclick="showDetails('curso1')">
+            <!-- Curso de SEO com evento de clique para mostrar detalhes -->
+            <h3>Curso de SEO</h3>
+            <img src="images/seoavançado.png" alt="SEO Avançado">
+            <p>Aprenda as melhores práticas de otimização para motores de busca.</p>
+        </div>
+        <div class="curso" onclick="showDetails('curso2')">
+            <!-- Curso de Marketing de Conteúdo com evento de clique para mostrar detalhes -->
+            <h3>Curso de Marketing de Conteúdo</h3>
+            <img src="images/Marketingdeconteudo_curso.png" alt="Marketing de Conteúdo">
+            <p>Crie conteúdo que engaja e converte.</p>
+        </div>
+        <div class="curso" onclick="showDetails('curso3')">
+            <!-- Curso de Mídias Sociais com evento de clique para mostrar detalhes -->
+            <h3>Curso de Mídias Sociais</h3>
+            <img src="images/cursodeMidiasDigitais_curso.png" alt="Mídias Sociais">
+            <p>Domine as redes sociais e aumente sua presença online. Parte do curso voltada para divulgação.</p>
+        </div>
+        <div class="curso" onclick="showDetails('curso4')">
+            <!-- Curso de Introdução ao Marketing com evento de clique para mostrar detalhes -->
+            <h3>Curso de Introdução ao Marketing</h3>
+            <img src="images/intmktdigital.png" alt="Introdução ao Marketing">
+            <p>Aprenda os fundamentos do marketing digital e como aplicá-los.</p>
+        </div>
+        <div class="curso" onclick="showDetails('curso5')">
+            <!-- Curso de Redes Sociais com evento de clique para mostrar detalhes -->
+            <h3>Curso de Redes Sociais</h3>
+            <img src="images/mktemredessociasi.png" alt="Redes Sociais">
+            <p>Domine as redes sociais e aumente sua presença online. Parte voltada do curso para a venda</p>
+        </div>
+    </section>
+
+    <section id="contato">
+        <!-- Seção de contato com um formulário -->
+        <h2>Contato</h2>
+        <h3>Caso tenha alguma dúvida sobre os cursos, por favor entre em contato conosco.</h3>
+        <form>
+            <!-- Formulário para contato -->
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <div id="modal" class="modal">
+        <!-- Modal para exibir detalhes do curso -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <!-- Botão para fechar o modal -->
+            <h3 id="modal-title"></h3>
+            <img id="modal-image" src="#" alt="">
+            <p id="modal-description"></p>
+            <a id="modal-link" href="#" target="_blank">Assista ao Vídeo</a>
+        </div>
+    </div>
+
+    <script src="abacursos.js"></script>
+</body>
+</html>

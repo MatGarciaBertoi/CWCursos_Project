@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+
+    <style>
+        /* Estilo para o corpo da página */
+        body {
+            font-family: Arial, Helvetica, sans-serif; /* Fonte padrão */
+            background: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71)); /* Gradiente de fundo */
+            text-align: center; /* Centraliza o texto */
+            color: white; /* Cor do texto */
+        }
+        /* Estilo para a caixa central */
+        .box {
+            position: absolute; /* Posicionamento absoluto */
+            top: 50%; /* Centraliza verticalmente */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta a centralização */
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
+            padding: 30px; /* Espaçamento interno */
+            border-radius: 30px; /* Bordas arredondadas */
+        }
+        /* Estilo para links */
+        a {
+            text-decoration: none; /* Remove a sublinhado */
+            color: white; /* Cor do texto */
+            border: 3px solid dodgerblue; /* Borda */
+            border-radius: 10px; /* Bordas arredondadas */
+            padding: 10px; /* Espaçamento interno */
+        }
+        /* Estilo para links quando o mouse está sobre eles */
+        a:hover {
+            background-color: dodgerblue; /* Fundo azul */
+        }
+        /* Estilo para o conteúdo */
+        .content {
+            width: 100vw; /* Largura total da viewport */
+            height: 100vh; /* Altura total da viewport */
+            display: flex; /* Flexbox */
+            align-items: center; /* Alinha ao centro verticalmente */
+            justify-content: center; /* Alinha ao centro horizontalmente */
+        }
+        /* Wrapper do slider */
+        .slider-wrapper {
+            font-size: 40px; /* Tamanho da fonte */
+            color: #aaa; /* Cor do texto */
+            font-weight: bold; /* Texto em negrito */
+            text-transform: uppercase; /* Texto em maiúsculas */
+            display: flex; /* Flexbox */
+            align-items: center; /* Alinha ao centro verticalmente */
+            justify-content: center; /* Alinha ao centro horizontalmente */
+        }
+        /* Slider */
+        .slider {
+            height: 50px; /* Altura fixa */
+            padding-left: 15px; /* Espaçamento à esquerda */
+            overflow: hidden; /* Esconde o conteúdo que transborda */
+        }
+        .slider div {
+            color: #fff; /* Cor do texto */
+            height: 50px; /* Altura fixa */
+            margin-bottom: 50px; /* Margem inferior */
+            padding: 2px 15px; /* Espaçamento interno */
+            text-align: center; /* Alinha o texto ao centro */
+            box-sizing: border-box; /* Inclui padding e border no tamanho total */
+        }
+        .slider-text1 {
+            background: #3498db; /* Fundo azul */
+            animation: slide 5s linear infinite; /* Animação contínua */
+        }
+        .slider-text2 {
+            background: #27ae60; /* Fundo verde */
+        }
+        .slider-text3 {
+            background: #8E44ad; /* Fundo roxo */
+        }
+        /* Animações do slider */
+        @keyframes slide {
+            0% {margin-top: -250px;}
+            5% {margin-top: -200px;}
+            33% {margin-top: -200px;}
+            38% {margin-top: -100px;}
+            66% {margin-top: -100px;}
+            71% {margin-top: 0px;}
+            100% {margin-top: 0px;}
+        }
+        /* Estilo para o corpo da página */
+        body {
+            margin: 0; /* Remove a margem */
+            width: 100%; /* Largura total */
+            height: 100%; /* Altura total */
+            background-image: linear-gradient(to right, black, #575758); /* Gradiente de fundo */
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* Fonte padrão */
+        }
+        /* Estilo para a seção de ondas */
+        section .wave {
+            position: absolute; /* Posicionamento absoluto */
+            bottom: 0; /* Alinha ao fundo */
+            left: 0; /* Alinha à esquerda */
+            width: 100%; /* Largura total */
+            height: 100px; /* Altura fixa */
+            background: url(images/wave.png); /* Imagem de fundo */
+            background-size: 1000px 100px; /* Tamanho da imagem */
+        }
+        /* Animações das ondas */
+        section .wave.wave1 {
+            animation: animate 30s linear infinite; /* Animação contínua */
+            z-index: 1000; /* Camada superior */
+            opacity: 1; /* Opacidade total */
+            animation-delay: 0s; /* Sem atraso */
+            bottom: 0; /* Alinha ao fundo */
+        }
+        section .wave.wave2 {
+            animation: animate2 15s linear infinite; /* Animação contínua */
+            z-index: 999; /* Camada inferior à wave1 */
+            opacity: 0.5; /* Opacidade reduzida */
+            animation-delay: -5s; /* Atraso na animação */
+            bottom: 10px; /* Alinha 10px acima do fundo */
+        }
+        section .wave.wave3 {
+            animation: animate3 30s linear infinite; /* Animação contínua */
+            z-index: 997; /* Camada inferior à wave2 */
+            opacity: 0.7; /* Opacidade intermediária */
+            animation-delay: -2s; /* Atraso na animação */
+            bottom: 20px; /* Alinha 20px acima do fundo */
+        }
+        /* Animações */
+        @keyframes animate {
+            0% {background-position-x: 0;}
+            100% {background-position-x: 1000px;}
+        }
+        @keyframes animate2 {
+            0% {background-position-x: 0;}
+            100% {background-position-x: -1000px;}
+        }
+        @keyframes animate3 {
+            0% {background-position-x: 0;}
+            100% {background-position-x: 1000px;}
+        }
+        @keyframes animate4 {
+            0% {background-position-x: 0;}
+            100% {background-position-x: -1000px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Título principal da página -->
+    <h1>Entre no site da melhor plataforma de cursos de marketing do Brasil</h1>
+    <h2>CW Cursos</h2> <!-- Subtítulo -->
+
+    <!-- Caixa central com links -->
+    <div class="box">
+        <a href="signin.html">Login</a> <!-- Link para a página de login -->
+        <a href="signup.php">Cadastre-se</a> <!-- Link para a página de cadastro -->
+    </div>
+
+    <!-- Conteúdo central com slider -->
+    <div class="content">
+        <div class="slider-wrapper">
+            Com a CW você terá mais
+            <div class="slider">
+                <div class="slider-text1">conhecimento</div> <!-- Texto do slider -->
+                <div class="slider-text2">sabedoria</div> <!-- Texto do slider -->
+                <div class="slider-text3">oportunidade</div> <!-- Texto do slider -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Seção de ondas animadas -->
+    <section>
+        <div class="wave wave1"></div> <!-- Primeira onda -->
+        <div class="wave wave2"></div> <!-- Segunda onda -->
+        <div class="wave wave3"></div> <!-- Terceira onda -->
+        <div class="wave wave4"></div> <!-- Quarta onda -->
+    </section>
+</body>
+</html>
