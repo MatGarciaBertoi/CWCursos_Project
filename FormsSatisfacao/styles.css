@@ -1,0 +1,108 @@
+/* Reset básico para margem e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.checkbox-group {
+    margin-bottom: 15px;
+}
+
+.checkbox-group label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.checkbox-group input[type="text"] {
+    display: inline;
+    width: auto;
+    margin-left: 5px;
+}
+
+.rating {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rating input[type="radio"] {
+    margin-right: 5px;
+}
+
+.rating label {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
