@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Altere para seu usuário do MySQL
-$password = ""; // Altere para sua senha do MySQL
-$dbname = "cursos_online";
+$username = "root"; 
+$password = ""; 
+$dbname = "cursos_online"; //nome colocado no banco de dados, favor importarem e colocar mesmo nome
 
 // Criar conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
