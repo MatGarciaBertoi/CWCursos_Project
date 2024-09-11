@@ -1,42 +1,41 @@
 <?php
-include_once('config.php'); // Inclui o arquivo de configuração do banco de dados
+// Verifica se o formulário de login foi submetido
+if (isset($_POST['submit'])) {
+    include_once('config.php'); // Inclui o arquivo de configuração com a conexão ao banco de dados
 
-if(isset($_POST["submit"]) && !empty($_POST['usuario']) && !empty($_POST['senha'])) { // Verifica se o formulário foi enviado e se os campos de usuário e senha não estão vazios
+    // Obtém os dados de entrada do formulário
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
 
-    $usuario = $_POST['usuario'];// Obtém o valor do campo de usuário do formulário
-    $senha = $_POST['senha']; // Obtém o valor do campo de senha do formulário
+    // Verifica se o usuário existe no banco de dados
+    $query = "SELECT * FROM usuarios WHERE usuario = ?";
+    $stmt = $conexao->prepare($query);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    echo "Usuário: " . $usuario . "<br>"; // Exibe o usuário para depuração
-    echo "Senha: " . $senha . "<br>"; // Exibe a senha para depuração
+    // Se o usuário existir, verifica a senha
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
-    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'"; // Cria uma consulta SQL para verificar as credenciais do usuário
-
-    echo "SQL: " . $sql . "<br>"; // Exibe a consulta SQL para depuração
-
-    $result = $conexao->query($sql);
-    // Executa a consulta SQL no banco de dados
-
-    if($result) {
-        // Verifica se a consulta foi bem-sucedida
-
-        if($result->num_rows > 0) {
-            // Verifica se foram encontradas linhas correspondentes no banco de dados
-
-            // Login bem-sucedido, redirecionar para a página de sistema
-            header("Location: sistema.html");
-            exit();
+        // Verifica se a senha inserida corresponde ao hash armazenado no banco de dados
+        if (password_verify($senha, $user['senha'])) {
+            // Se a senha estiver correta, redireciona para a página sistema.html
+            echo "<script>
+                    alert('Login realizado com sucesso!');
+                    window.location.href = 'sistema.html';
+                    </script>";
         } else {
-            // Login falhou, redirecionar para a página de login com mensagem de erro
-            header("Location: signin.html?error=invalid");
-            exit();
+            // Se a senha estiver incorreta, exibe uma mensagem de erro
+            echo "<script>alert('Senha incorreta!');</script>";
         }
     } else {
-        // Erro na consulta SQL, exibe mensagem de erro
-        echo "Erro na consulta SQL: " . $conexao->error;
+        // Se o usuário não for encontrado, exibe uma mensagem de erro
+        echo "<script>alert('Usuário não encontrado!');</script>";
     }
-} else {
-    // Dados de login não foram enviados corretamente, redirecionar para a página de login com mensagem de erro
-    header('Location: signin.html?error=missing');
-    exit();
+
+    // Fecha as conexões
+    $stmt->close();
+    $conexao->close();
 }
 ?>

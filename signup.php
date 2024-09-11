@@ -4,21 +4,58 @@ if (isset($_POST['submit'])) {
     include_once('config.php'); // Inclui o arquivo de configuração
 
     // Obtém os dados do formulário
-    $nome = ($_POST['nome']);
-    $usuario = ($_POST['usuario']);
-    $senha = ($_POST['senha']);
-    $confisenha = ($_POST['confirmSenha']);
+    $nome = $_POST['nome'];
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
+    $confisenha = $_POST['confirmSenha'];
 
-    // Verificação se as senhas coincidem
+    // Verifica se as senhas coincidem
     if ($senha !== $confisenha) {
-        echo "As senhas não coincidem!"; // Exibe uma mensagem de erro
-        exit; // Termina o script
+        echo "<script>alert('As senhas não coincidem!');</script>";
+        exit;
     }
 
-    // Insere os dados no banco de dados
-    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome, usuario, senha, confsenha) VALUES ('$nome', '$usuario', '$senha', '$confisenha')");
+    // Verifica se o nome de usuário já existe no banco de dados
+    $query = "SELECT * FROM usuarios WHERE usuario = ?";
+    $stmt = $conexao->prepare($query);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        // Se o nome de usuário já existe, exibe uma mensagem de erro
+        echo "<script>alert('O nome de usuário já existe. Escolha outro.');</script>";
+    } else {
+        // Hash da senha para segurança
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+        // Insere os dados no banco de dados
+        $sql = "INSERT INTO usuarios (nome, usuario, senha, confsenha) VALUES (?, ?, ?, ?)";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("ssss", $nome, $usuario, $senhaHash, $confisenha);
+
+        if ($stmt->execute()) {
+            // Aguarda um momento para garantir que o banco de dados seja atualizado corretamente
+            sleep(1); // Adiciona uma pequena pausa para garantir a atualização do banco
+
+            // Exibe mensagem de sucesso e redireciona para home.html
+            echo "<script>
+                    alert('Usuário cadastrado com sucesso!');
+                    window.location.href = 'home.html';
+                    </script>";
+        } else {
+            echo "<script>alert('Erro ao cadastrar o usuário.');</script>";
+        }
+    }
+
+    // Fecha as conexões
+    $stmt->close();
+    $conexao->close();
 }
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="pt-BR"> 
