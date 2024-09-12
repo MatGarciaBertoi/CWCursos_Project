@@ -1,40 +1,37 @@
 <?php
-// Verifica se o formulário de login foi submetido
-if (isset($_POST['submit'])) {
-    include_once('config.php'); // Inclui o arquivo de configuração com a conexão ao banco de dados
+session_start(); // Inicia a sessão
+include_once('config.php'); // Inclui o arquivo de configuração
 
-    // Obtém os dados de entrada do formulário
-    $usuario = $_POST['usuario'];
+// Verifica se o formulário foi submetido
+if (isset($_POST['submit'])) {
+    $usuario = $_POST['usuario']; // Nome de usuário
+    $email = $_POST['email']; // Email
     $senha = $_POST['senha'];
 
-    // Verifica se o usuário existe no banco de dados
-    $query = "SELECT * FROM usuarios WHERE usuario = ?";
-    $stmt = $conexao->prepare($query);
-    $stmt->bind_param("s", $usuario);
+    // Prepara a consulta para verificar se o usuário e o email existem
+    $loginQuery = "SELECT * FROM usuarios WHERE usuario = ? AND email = ?";
+    $stmt = $conexao->prepare($loginQuery);
+    $stmt->bind_param("ss", $usuario, $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Se o usuário existir, verifica a senha
+    // Verifica se o usuário foi encontrado
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
-        // Verifica se a senha inserida corresponde ao hash armazenado no banco de dados
+        // Verifica se a senha está correta
         if (password_verify($senha, $user['senha'])) {
-            // Se a senha estiver correta, redireciona para a página sistema.html
-            echo "<script>
-                    alert('Login realizado com sucesso!');
-                    window.location.href = 'sistema.html';
-                    </script>";
+            $_SESSION['usuario'] = $user['usuario']; // Define a sessão do usuário
+            header('Location: sistema.html'); // Redireciona para o sistema
+            exit();
         } else {
-            // Se a senha estiver incorreta, exibe uma mensagem de erro
             echo "<script>alert('Senha incorreta!');</script>";
         }
     } else {
-        // Se o usuário não for encontrado, exibe uma mensagem de erro
-        echo "<script>alert('Usuário não encontrado!');</script>";
+        echo "<script>alert('Usuário ou e-mail não encontrados!');</script>";
     }
 
-    // Fecha as conexões
+    // Fecha a conexão
     $stmt->close();
     $conexao->close();
 }

@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
     // Obtém os dados do formulário
     $nome = $_POST['nome'];
     $usuario = $_POST['usuario'];
+    $email = ($_POST['email']);
     $senha = $_POST['senha'];
     $confisenha = $_POST['confirmSenha'];
 
@@ -15,10 +16,10 @@ if (isset($_POST['submit'])) {
         exit;
     }
 
-    // Verifica se o nome de usuário já existe no banco de dados
-    $query = "SELECT * FROM usuarios WHERE usuario = ?";
-    $stmt = $conexao->prepare($query);
-    $stmt->bind_param("s", $usuario);
+    // Verifica se o usuário ou e-mail já estão cadastrados
+    $checkQuery = "SELECT * FROM usuarios WHERE usuario = ? OR email = ?";
+    $stmt = $conexao->prepare($checkQuery);
+    $stmt->bind_param("ss", $usuario, $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -30,9 +31,9 @@ if (isset($_POST['submit'])) {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
         // Insere os dados no banco de dados
-        $sql = "INSERT INTO usuarios (nome, usuario, senha, confsenha) VALUES (?, ?, ?, ?)";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bind_param("ssss", $nome, $usuario, $senhaHash, $confisenha);
+        $insertQuery = "INSERT INTO usuarios (nome, usuario, email, senha, confsenha) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conexao->prepare($insertQuery);
+        $stmt->bind_param("sssss", $nome, $usuario, $email, $senhaHash, $confisenha);
 
         if ($stmt->execute()) {
             // Aguarda um momento para garantir que o banco de dados seja atualizado corretamente
@@ -236,6 +237,10 @@ if (isset($_POST['submit'])) {
                 <div class="label-float">
                     <input type="text" name="usuario" id="usuario" placeholder=" " required /> 
                     <label id="labelUsuario" for="usuario">Usuario</label>
+                </div>
+                <div class="label-float">
+                <input type="email" name="email" required placeholder=" " />
+                <label for="email">E-mail</label>
                 </div>
 
                 <!-- Campo de senha com label flutuante -->
