@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         // Verifica se a senha está correta
         if (password_verify($senha, $user['senha'])) {
             $_SESSION['usuario'] = $user['usuario']; // Define a sessão do usuário
-            header('Location: sistema.html'); // Redireciona para o sistema
+            header('Location: profile.php'); // Redireciona para o perfil
             exit();
         } else {
             echo "<script>alert('Senha incorreta!');</script>";

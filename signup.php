@@ -6,9 +6,10 @@ if (isset($_POST['submit'])) {
     // Obtém os dados do formulário
     $nome = $_POST['nome'];
     $usuario = $_POST['usuario'];
-    $email = ($_POST['email']);
+    $email = $_POST['email'];
     $senha = $_POST['senha'];
     $confisenha = $_POST['confirmSenha'];
+    $dataNascimento = $_POST['dataNascimento']; // Nova variável para a data de nascimento
 
     // Verifica se as senhas coincidem
     if ($senha !== $confisenha) {
@@ -31,9 +32,9 @@ if (isset($_POST['submit'])) {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
         // Insere os dados no banco de dados
-        $insertQuery = "INSERT INTO usuarios (nome, usuario, email, senha, confsenha) VALUES (?, ?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO usuarios (nome, usuario, email, senha, confsenha, data_nascimento) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conexao->prepare($insertQuery);
-        $stmt->bind_param("sssss", $nome, $usuario, $email, $senhaHash, $confisenha);
+        $stmt->bind_param("ssssss", $nome, $usuario, $email, $senhaHash, $confisenha, $dataNascimento);
 
         if ($stmt->execute()) {
             // Aguarda um momento para garantir que o banco de dados seja atualizado corretamente
@@ -56,8 +57,6 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="pt-BR"> 
 <head>
@@ -65,7 +64,6 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
-    
 </head>
 <body>
     <style>
@@ -238,9 +236,17 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="usuario" id="usuario" placeholder=" " required /> 
                     <label id="labelUsuario" for="usuario">Usuario</label>
                 </div>
+
+                <!-- Campo de e-mail com label flutuante -->
                 <div class="label-float">
-                <input type="email" name="email" required placeholder=" " />
-                <label for="email">E-mail</label>
+                    <input type="email" name="email" required placeholder=" " />
+                    <label for="email">E-mail</label>
+                </div>
+
+                <!-- Campo de data de nascimento com label flutuante -->
+                <div class="label-float">
+                    <input type="date" name="dataNascimento" id="dataNascimento" placeholder=" " required /> 
+                    <label id="labelDataNascimento" for="dataNascimento">Data de Nascimento</label>
                 </div>
 
                 <!-- Campo de senha com label flutuante -->
