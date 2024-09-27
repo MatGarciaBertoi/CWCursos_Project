@@ -1,0 +1,4 @@
+Quero fazer novas funcionalidades e adicionar um botão que vá direto pra uma parte do meu projeto chamado "sistema.html", ideias de funcionalidades novas: 
+-Visualização de Dados Pessoais
+-Histórico de Cursos e Atividades
+-Opção de Editar Perfil

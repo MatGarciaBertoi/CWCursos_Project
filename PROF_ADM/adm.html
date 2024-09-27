@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eef2f3;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        header {
+            background: #007bff;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px 10px 0 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .list {
+            margin-top: 20px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        .message {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .pending {
+            background-color: #ffeb3b;
+        }
+        .responded {
+            background-color: #4caf50;
+            color: white;
+        }
+        .resolved {
+            background-color: #2196f3;
+            color: white;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Painel de Administração</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" onclick="showSection('dashboard')">Dashboard</a></li>
+                    <li><a href="#" onclick="showSection('cursos')">Cursos</a></li>
+                    <li><a href="#" onclick="showSection('usuarios')">Usuários</a></li>
+                    <li><a href="#" onclick="showSection('suporte')">Suporte</a></li>
+                    <li><a href="#" onclick="showSection('acessibilidade')">Acessibilidade</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="dashboard" class="section active">
+                <h2>Dashboard</h2>
+                <p>Bem-vindo ao painel de administração!</p>
+            </section>
+
+            <section id="cursos" class="section">
+                <h2>Gerenciar Cursos</h2>
+                <button onclick="alert('Adicionar Curso')">Adicionar Curso</button>
+                <button onclick="listCourses()">Listar Cursos</button>
+                <div id="courseList" class="list"></div>
+            </section>
+
+            <section id="usuarios" class="section">
+                <h2>Gerenciar Usuários</h2>
+                
+                <h3>Professores</h3>
+                <button onclick="window.location.href='cadastro_ADM_PROF.html'">Adicionar Professor</button>
+                <button onclick="listProfessores()">Listar Professores</button>
+                <div id="professorList" class="list"></div>
+
+                <h3>Administradores</h3>
+                <button onclick="window.location.href='cadastro_ADM_PROF.html'">Adicionar Administrador</button>
+                <button onclick="listAdministradores()">Listar Administradores</button>
+                <div id="adminList" class="list"></div>
+
+                <h3>Alunos</h3>
+                <button onclick="alert('Adicionar Aluno')">Adicionar Aluno</button>
+                <button onclick="listAlunos()">Listar Alunos</button>
+                <div id="alunoList" class="list"></div>
+            </section>
+
+            <section id="suporte" class="section">
+                <h2>Suporte</h2>
+                <button onclick="listMessages()">Listar Mensagens</button>
+                <div id="messageList" class="list"></div>
+            </section>
+
+            <section id="acessibilidade" class="section">
+                <h2>Configurações de Acessibilidade</h2>
+                <button onclick="adjustAccessibility('increaseFont')">Aumentar Letra</button>
+                <button onclick="adjustAccessibility('decreaseFont')">Diminuir Letra</button>
+                <button onclick="alert('Ativar Legendas')">Ativar Legendas</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Certificate Signing -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Certificado</h2>
+            <p>Visualizando certificado para <span id="courseName"></span>.</p>
+            <button onclick="signCertificate()">Assinar Certificado</button>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const links = document.querySelectorAll('nav ul li a');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`a[href="#${sectionId}"]`).classList.add('active');
+        }
+
+        function listCourses() {
+            const courseList = document.getElementById('courseList');
+            courseList.innerHTML = `
+                <h3>Cursos Listados</h3>
+                <ul>
+                    <li>
+                        Curso 1 
+                        <button onclick="approveCourse(1)">Aprovar</button>
+                        <button onclick="rejectCourse(1)">Reprovar</button>
+                        <button onclick="openCertificateModal('Curso 1')">Visualizar Certificado</button>
+                    </li>
+                    <li>
+                        Curso 2 
+                        <button onclick="approveCourse(2)">Aprovar</button>
+                        <button onclick="rejectCourse(2)">Reprovar</button>
+                        <button onclick="openCertificateModal('Curso 2')">Visualizar Certificado</button>
+                    </li>
+                </ul>
+            `;
+        }
+
+        function listMessages() {
+            const messageList = document.getElementById('messageList');
+            messageList.innerHTML = `
+                <h3>Mensagens Listadas</h3>
+                <div class="message pending">
+                    <strong>Aluno 1:</strong> Problema com o login.
+                    <br><strong>Situação:</strong> Pendente
+                </div>
+                <div class="message responded">
+                    <strong>Aluno 2:</strong> Não consigo acessar o curso.
+                    <br><strong>Situação:</strong> Respondida
+                </div>
+                <div class="message resolved">
+                    <strong>Aluno 3:</strong> Dúvidas sobre a avaliação.
+                    <br><strong>Situação:</strong> Resolvido
+                </div>
+            `;
+        }
+
+        function listProfessores() {
+            const professorList = document.getElementById('professorList');
+            professorList.innerHTML = `
+                <h3>Professores Listados</h3>
+                <ul>
+                    <li>Professor 1 
+                        <button onclick="blockUser('Professor 1')">Bloquear</button>
+                        <button onclick="deleteUser('Professor 1')">Excluir</button>
+                    </li>
+                    <li>Professor 2 
+                        <button onclick="blockUser('Professor 2')">Bloquear</button>
+                        <button onclick="deleteUser('Professor 2')">Excluir</button>
+                    </li>
+                </ul>
+            `;
+        }
+
+        function listAdministradores() {
+            const adminList = document.getElementById('adminList');
+            adminList.innerHTML = `
+                <h3>Administradores Listados</h3>
+                <ul>
+                    <li>Administrador 1 
+                        <button onclick="blockUser('Administrador 1')">Bloquear</button>
+                        <button onclick="deleteUser('Administrador 1')">Excluir</button>
+                    </li>
+                    <li>Administrador 2 
+                        <button onclick="blockUser('Administrador 2')">Bloquear</button>
+                        <button onclick="deleteUser('Administrador 2')">Excluir</button>
+                    </li>
+                </ul>
+            `;
+        }
+
+        function listAlunos() {
+            const alunoList = document.getElementById('alunoList');
+            alunoList.innerHTML = `
+                <h3>Alunos Listados</h3>
+                <ul>
+                    <li>Aluno 1 
+                        <button onclick="blockUser('Aluno 1')">Bloquear</button>
+                        <button onclick="deleteUser('Aluno 1')">Excluir</button>
+                    </li>
+                    <li>Aluno 2 
+                        <button onclick="blockUser('Aluno 2')">Bloquear</button>
+                        <button onclick="deleteUser('Aluno 2')">Excluir</button>
+                    </li>
+                </ul>
+            `;
+        }
+
+        function blockUser(user) {
+            alert(`${user} foi bloqueado!`);
+        }
+
+        function deleteUser(user) {
+            if (confirm(`Tem certeza que deseja excluir ${user}?`)) {
+                alert(`${user} foi excluído!`);
+            }
+        }
+
+        function approveCourse(courseId) {
+            alert(`Curso ${courseId} aprovado!`);
+        }
+
+        function rejectCourse(courseId) {
+            alert(`Curso ${courseId} reprovado!`);
+        }
+
+        function adjustAccessibility(action) {
+            if (action === 'increaseFont') {
+                document.body.style.fontSize = 'larger';
+                alert('Fonte aumentada!');
+            } else if (action === 'decreaseFont') {
+                document.body.style.fontSize = 'smaller';
+                alert('Fonte diminuída!');
+            }
+        }
+
+        function openCertificateModal(course) {
+            document.getElementById('courseName').innerText = course;
+            document.getElementById('certificateModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('certificateModal').style.display = "none";
+        }
+
+        function signCertificate() {
+            alert('Certificado assinado com sucesso!');
+            closeModal();
+        }
+
+        showSection('dashboard');
+    </script>
+</body>
+</html>

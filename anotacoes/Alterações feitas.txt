@@ -1,0 +1,15 @@
+Alterações feitas:
+
+Alteraçoes realizadas nos seguintes arquivos:
+
+profile.html = Virou profile.php, mudou o visual por inteiro e inclui outras funcionalidades
+testeLogin.php = Verificação pro usuário logar primeiro antes de acessar
+criação da parte de upload_photo.php = não está funcionando ainda
+
+Nenhuma alteração no banco de dados foi feita ainda tbm
+
+
+Fazer alterações, principal alteração no momento:
+
+Colocar um botão que direciona a parte de cursos e do sistema em si.
+Arrumar o layout.

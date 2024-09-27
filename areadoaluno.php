@@ -18,32 +18,34 @@ $usuario = $_SESSION['usuario']; // Recupera o nome do usuário
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Aluno</title>
     <style>
-        /* Estilos gerais para o corpo da página */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #000;
-        }
-
-        header {
-    background-color: #003399;
-    color: #fff;
-    display: flex;
-    justify-content: center; /* Centraliza os itens de navegação */
-    align-items: center;
-    padding: 20px 20px; /* Aumenta o padding para expandir o tamanho vertical */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative; /* Permite o uso de position: absolute na logo */
-    height: 40px; /* Define uma altura fixa para o cabeçalho */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f0f4f8, #d9e3f0);
+    color: #333;
 }
 
-header .logo {
-    position: absolute; /* Posiciona a logo de forma absoluta */
-    left: 20px; /* Define a logo no canto esquerdo */
-    top: 50%;
-    transform: translateY(-50%); /* Centraliza verticalmente a logo */
+header {
+    background-color: #002d72;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+header .logo img {
+    height: 60px;
+    width: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+header .logo img:hover {
+    transform: rotate(360deg);
 }
 
 header nav ul {
@@ -51,93 +53,122 @@ header nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center; /* Centraliza os links dentro da navegação */
 }
 
 header nav ul li {
-    margin: 0 20px; /* Aumenta o espaçamento entre os itens */
+    margin: 0 20px;
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 header nav ul li a:hover {
-    text-decoration: underline;
+    background-color: #004abf;
 }
 
+main {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        header .logo img {
-            height: 50px;
-            width: auto;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+.welcome {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
 
-        main {
-            padding: 20px;
-        }
+.welcome h1 {
+    margin-top: 0;
+    color: #002d72;
+}
 
-        .welcome {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            text-align: center;
-        }
+.content {
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    animation: fadeIn 1.2s ease-in-out;
+}
 
-        .welcome h1 {
-            margin-top: 0;
-        }
+.courses {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-        .content {
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
+.course {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .courses {
-            display: flex;
-            flex-wrap: wrap;
-        }
+.course:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
 
-        .course {
-            background-color: #f9f9f9;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            flex: 1 1 calc(33.333% - 40px);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
+.course h3 {
+    margin-top: 0;
+    color: #002d72;
+}
 
-        .course h3 {
-            margin-top: 0;
-        }
+.course img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 
-        .course a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #003399;
-            text-decoration: none;
-        }
+.course a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #002d72;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #e0ebff;
+    transition: background-color 0.3s ease;
+}
 
-        .course a:hover {
-            text-decoration: underline;
-        }
+.course a:hover {
+    background-color: #c2d6ff;
+}
 
-        footer {
-            background-color: #003399;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
+footer {
+    background-color: #002d72;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
     </style>
 </head>
 <body>
@@ -165,19 +196,38 @@ header nav ul li a:hover {
             <div class="courses">
                 <div class="course">
                     <h3>SEO</h3>
-                    <img src="" alt="Imagem do curso SEO">
+                    <img src="images/seoavançado.png" alt="Imagem do curso SEO">
                     <p>Aprenda as melhores práticas de otimização para motores de busca.</p>
-                    <a href="#">Acessar</a>
+                    <a href="abacursos.html">Acessar</a>
                 </div>
                 <div class="course">
                     <h3>Curso de Marketing de Redes Sociais</h3>
-                    <img src="" alt="Imagem do curso de Marketing de Redes Sociais">
+                    <img src="images/cursodeMidiasDigitais_curso.png" alt="Imagem do curso de Marketing de Redes Sociais">
                     <p>Crie conteúdo que engaja e converte.</p>
-                    <a href="#">Acessar</a>
+                    <a href="abacursos.html">Acessar</a>
                 </div>
             </div>
         </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const courses = document.querySelectorAll('.course');
+
+    courses.forEach(course => {
+        course.addEventListener('mouseover', function () {
+            this.style.transform = 'scale(1.05)';
+        });
+
+        course.addEventListener('mouseout', function () {
+            this.style.transform = 'scale(1)';
+        });
+    });
+
+    const userGreeting = document.querySelector('.welcome h1');
+    userGreeting.classList.add('animate__animated', 'animate__fadeInDown');
+});
+
+    </script>
     <footer>
         <p>&copy; 2024 CW CURSOS. Aqui seu conhecimento é prioridade.</p>
     </footer>
