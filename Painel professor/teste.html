@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="all" href="S.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://d2ffu0zq97rhm7.cloudfront.net/fallback/brand_image/default.png" />
+    <style>
+        .static-backdrop::before {
+            background-image: url("https://d2ffu0zq97rhm7.cloudfront.net/fallback/cover_image/desktop-2.jpg");
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('cab.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+        });
+    </script>
+</head>
+<body>
+    <div id="header-placeholder"></div>

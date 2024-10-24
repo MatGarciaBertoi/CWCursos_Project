@@ -180,7 +180,7 @@ footer {
             <ul>
                 <li><a href="abacursos.html">Cursos</a></li>
                 <li><a href="abatrofeus.html">Galeria de certificados</a></li>
-                <li><a href="index.html">Suporte</a></li>
+                <li><a href="../Suporte/Suporte.html">Suporte</a></li>
                 <li><a href="profile.php">Perfil</a></li>
                 <li><a href="sistema.html">Sair</a></li>
             </ul>

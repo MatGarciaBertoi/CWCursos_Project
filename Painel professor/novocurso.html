@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+<link rel="stylesheet" media="all" href="S.css" />
+<style>
+    .static-backdrop::before {
+      background-image: url("https://d2ffu0zq97rhm7.cloudfront.net/fallback/cover_image/desktop-2.jpg");
+    }
+  </style>
+<link rel="shortcut icon" type="image/x-icon" href="https://d2ffu0zq97rhm7.cloudfront.net/fallback/brand_image/default.png" />
+
+<header>
+<nav class='navbar navbar-default customer-nav customer-brand-nav' role='navigation'>
+<div class='container'>
+
+
+
+<div class='collapse navbar-collapse' id='navbar-collapse-1'>
+<ul class='nav navbar-nav navbar-right control-account'>
+<li class='customer-info user-menu'>
+<div>
+<div class='profile-img-container'>
+<div class='info'>
+<span class='hello-customer'>Olá,</span>
+<span class='customer-name'>Professor(a)</span>
+</div>
+<img class="customer-img" src="https://d2ffu0zq97rhm7.cloudfront.net/fallback/profile_image/nav_img_default.png" alt="Nav img default" />
+<div class='show-menu arrow-down'></div>
+</div>
+</div>
+<div class='customer-wrapper'>
+<div class='customer-menu-box'>
+<div class='arrow-menu-up'></div>
+<p class='customer-email'>emailprofessor@cw.com</p>
+
+<ul class='customer-actions'>
+<li>
+<a href="../Painel professor/perfil.html">Minha Conta</a>
+</li>
+
+<li>
+<a target="_blank" href="../Suporte/Suporte.html">Suporte</a>
+</li>
+<li>
+<a id="customer-dashboard-logout" rel="nofollow" data-method="delete" href="/sign_out">Sair</a>
+</li>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<a id="sidebar-toogle-white" href="#"><span class='sr-only'>Toggle navigation</span>
+
+</a><nav class='navbar navbar-default brand-nav' role='navigation'>
+<div class='menu-block'></div>
+<div class='submenu-block'></div>
+<div class='container'>
+<button class='navbar-toggle' data-target='#navbar-collapse-2' data-toggle='collapse' type='button'>
+<span class='sr-only'>Toggle navigation</span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<div class='collapse navbar-collapse' id='navbar-collapse-2'>
+<ul class='nav navbar-nav navbar-left'></ul>
+</div>
+</div>
+</nav>
+<div class='new-customer-nav'>
+<div class='container'>
+<div class='mainnav mainnav-pt-BR' id='mainnav' role='navigation'>
+<ul>
+<li class='mainnav-item nav-li nav-li-js' id='mainnav-panel'>
+<a class="mainnav-item-link" href="../Painel professor/forum.html">Forum de duvidas
+</a></li>
+
+<li class='mainnav-item nav-li nav-li-js' id='mainnav-my-courses'>
+<a class="mainnav-item-link" href="../Painel professor/index.html">Meus cursos
+</span>
+</a><div class='nav-arrow nav-arrow-js'></div>
+<div class='subnav nav-sub nav-sub-js'>
+<ul class='subCMSListMenuUL' id='CMSListMenu3'>
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink" href="../Painel professor/index.html">Todos os cursos</a>
+</li>
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink linkSecondColor" href="../Painel professor/provas.html">Provas
+</span>
+</a></li>
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink linkSecondColor" href="/customer/brand/certificates">Notas de atividades
+</span>
+</a></li>
+
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink linkSecondColor" id="create-a-new-course" data-remote="true" href="../Painel professor/novocurso.html"><span aria-hidden='true' class='glyphicon glyphicon-plus'></span>
+Adicionar curso
+</a></li>
+</ul>
+</div>
+
+
+
+
+
+</header>
+        <main>
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                <div class="modal-header">
+                
+                <h5 id="modal-header" style="display: none;"></h5>
+                <div class="modal-header-content"><div class="col-xs-12 course-form-header text-center">
+                <h3>Adicionar curso</h3>
+                <span>Cadastre as informações básicas do seu curso</span>
+                </div>
+                </div>
+                </div>
+                <div class="modal-body" id="modal-body"><form id="course-form" class="simple_form new_course" enctype="multipart/form-data" action="/courses" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="row course-form">
+                <div class="col-md-6">
+                <div class="input string required course_name field_with_hint"><label class="string required" for="course_name">Nome <abbr title="obrigatório">*</abbr></label><input class="string required form-control" required="required" aria-required="true" maxlength="135" minlength="10" size="135" type="text" name="course[name]" id="course_name"><span class="hint">Escolha um nome que define o que você vai ensinar.</span></div>
+                <div class="input string required course_teaser field_with_hint"><label class="string required" for="course_teaser">Descrição curta <abbr title="obrigatório">*</abbr></label><input class="string required form-control" required="required" aria-required="true" maxlength="135" minlength="10" size="135" type="text" name="course[teaser]" id="course_teaser"><span class="hint">Descreva em poucas palavras o seu curso.</span></div>
+                <div class="box-course_image">
+                <label class="file optional" for="course_course_image">Imagem de capa do curso</label>
+                <div class="row">
+                <div class="form-group image-form-input">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="col-xs-2 col-md-2 preview-container">
+                <div class="fileinput-preview thumbnail fileinput-course_image" data-field="course_image" data-trigger="fileinput">
+                <img class="placeholder" src="https://d2ffu0zq97rhm7.cloudfront.net/fallback/course_image/background_default.jpg" alt="Background default">
+                </div>
+                </div>
+                <div class="col-md-10 col-xs-10 image-input">
+                <div class="input-group">
+                <div class="form-control uneditable-input" data-trigger="fileinput">
+                <p class="fui-clip fileinput-exists"></p>
+                <p class="fileinput-filename"></p>
+                </div>
+                <span class="input-group-btn btn-file">
+                <span class="btn btn-inverse fileinput-new" data-role="select-file">
+                <span class="full">
+                Selecionar
+                <span class="mobile">
+                imagem
+                </span>
+                </span>
+                </span>
+                <span class="btn btn-inverse fileinput-exists" data-reference="fileinput-course_image" data-role="change"><span class="fui-gear"></span><span class="btn-txt">Alterar</span>
+                </span>
+                <input accept=".jpg,.jpeg,.gif,.png" class="file optional flatui-fileinput" data-field="course_image" data-change="false" data-placeholder="https://d2ffu0zq97rhm7.cloudfront.net/fallback/course_image/background_default.jpg" type="file" name="course[course_image]" id="course_course_image">
+                <input class="remove_image" value="false" type="hidden" name="course[remove_course_image]" id="course_remove_course_image">
+                <a class="btn btn-inverse fileinput-exists" data-default="https://d2ffu0zq97rhm7.cloudfront.net/fallback/course_image/background_default.jpg" data-dismiss="fileinput" data-reference="fileinput-course_image" href="#"><span class="fui-trash"></span><span class="btn-txt">Remover</span>
+                </a>
+                <input id="multipart_course_image_url" type="hidden" name="course[multipart_course_image_url]">
+                </span>
+                </div>
+                <p class="brand-wizard-hint"><span class="hint">Escolha uma imagem que defina o seu curso.</span></p>
+                
+                
+                </div>
+                </div>
+                <div class="col-md-12">
+                <div class="upload-progress-bar-course_image"></div>
+                <div class="upload-status-bar-course_image"></div>
+                </div>
+                </div>
+                </div>
+                
+                </div>
+                </div>
+                
+                
+                </div>
+                </div>
+                </div>
+               
+                </form>
+                <script>
+                  var datepickerSelector = $('#datepicker-01');
+                  datepickerSelector.datepicker({
+                    showOtherMonths: true,
+                    dayNamesMin: dayNamesMin,
+                    monthNames: monthNames,
+                    showOptions: { direction: "up" },
+                    selectOtherMonths: true,
+                    dateFormat: dateFormat,
+                    beforeShow: function(input, inst)
+                    {
+                        document.getElementById('piker').appendChild(inst.dpDiv[0])
+                    }
+                  }).prev('.input-group-btn').on('click', function (e) {
+                    e && e.preventDefault();
+                    datepickerSelector.focus();
+                  });
+                  
+                  $.extend($.datepicker, { _checkOffset: function (inst,offset,isFixed) { return offset; } });
+                </script>
+                </div>
+                <div class="modal-footer" id="modal-footer"><div class="row modal-submit">
+                <div class="col-xs-6 text-left">
+                <a class="btn btn-inverse btn-default" aria-hidden="true" data-dismiss="modal" href="index.html">Cancelar</a>
+                </div>
+                <div class="col-xs-6 course-submit">
+                <button name="button" type="submit" class="btn btn-primary btn-large btn-modal-form " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando...">Criar curso</button>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+        </main>
+        
+    </body>
+</html>

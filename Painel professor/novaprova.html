@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+<link rel="stylesheet" media="all" href="S.css" />
+<style>
+    .static-backdrop::before {
+      background-image: url("https://d2ffu0zq97rhm7.cloudfront.net/fallback/cover_image/desktop-2.jpg");
+    }
+  </style>
+<link rel="shortcut icon" type="image/x-icon" href="https://d2ffu0zq97rhm7.cloudfront.net/fallback/brand_image/default.png" />
+
+<header>
+<nav class='navbar navbar-default customer-nav customer-brand-nav' role='navigation'>
+<div class='container'>
+
+
+
+<div class='collapse navbar-collapse' id='navbar-collapse-1'>
+<ul class='nav navbar-nav navbar-right control-account'>
+<li class='customer-info user-menu'>
+<div>
+<div class='profile-img-container'>
+<div class='info'>
+<span class='hello-customer'>Olá,</span>
+<span class='customer-name'>Professor(a)</span>
+</div>
+<img class="customer-img" src="https://d2ffu0zq97rhm7.cloudfront.net/fallback/profile_image/nav_img_default.png" alt="Nav img default" />
+<div class='show-menu arrow-down'></div>
+</div>
+</div>
+<div class='customer-wrapper'>
+<div class='customer-menu-box'>
+<div class='arrow-menu-up'></div>
+<p class='customer-email'>emailprofessor@cw.com</p>
+
+<ul class='customer-actions'>
+<li>
+<a href="../Painel professor/perfil.html">Minha Conta</a>
+</li>
+
+<li>
+<a target="_blank" href="../Suporte/Suporte.html">Suporte</a>
+</li>
+<li>
+<a id="customer-dashboard-logout" rel="nofollow" data-method="delete" href="/sign_out">Sair</a>
+</li>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<a id="sidebar-toogle-white" href="#"><span class='sr-only'>Toggle navigation</span>
+
+</a><nav class='navbar navbar-default brand-nav' role='navigation'>
+<div class='menu-block'></div>
+<div class='submenu-block'></div>
+<div class='container'>
+<button class='navbar-toggle' data-target='#navbar-collapse-2' data-toggle='collapse' type='button'>
+<span class='sr-only'>Toggle navigation</span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<div class='collapse navbar-collapse' id='navbar-collapse-2'>
+<ul class='nav navbar-nav navbar-left'></ul>
+</div>
+</div>
+</nav>
+<div class='new-customer-nav'>
+<div class='container'>
+<div class='mainnav mainnav-pt-BR' id='mainnav' role='navigation'>
+<ul>
+<li class='mainnav-item nav-li nav-li-js' id='mainnav-panel'>
+<a class="mainnav-item-link" href="../Painel professor/forum.html">Forum de duvidas
+</a></li>
+
+<li class='mainnav-item nav-li nav-li-js' id='mainnav-my-courses'>
+<a class="mainnav-item-link" href="../Painel professor/index.html">Meus cursos
+</span>
+</a><div class='nav-arrow nav-arrow-js'></div>
+<div class='subnav nav-sub nav-sub-js'>
+<ul class='subCMSListMenuUL' id='CMSListMenu3'>
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink" href="../Painel professor/index.html">Todos os cursos</a>
+</li>
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink linkSecondColor" href="../Painel professor/provas.html">Provas
+</span>
+</a></li>
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink linkSecondColor" href="/customer/brand/certificates">Notas de atividades
+</span>
+</a></li>
+
+<li class='subCMSListMenuLI'>
+<a class="subCMSListMenuLink linkSecondColor" id="create-a-new-course" data-remote="true" href="../Painel professor/novocurso.html"><span aria-hidden='true' class='glyphicon glyphicon-plus'></span>
+Adicionar curso
+</a></li>
+</ul>
+</div>
+
+
+
+
+
+</header>
+        <main>
+            <div class='container'>
+                <div class='row' id='yield-content'>
+                    <div class='col-md-12'>
+                        <div class='row'>
+                            <div class='col-md-12 text-center'>
+                                <p class='lead'>
+                                    Editando prova
+<span class='quiz-page-title'>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class='form-edit-quiz_container'>
+                            <form id="edit-quiz-form" class="simple_form edit_exam" action="/customer/brand/exams/767" accept-charset="UTF-8" method="post">
+                                <input name="utf8" type="hidden" value="&#x2713;"/>
+                                <input type="hidden" name="_method" value="patch"/>
+                                <input type="hidden" name="authenticity_token" value="P3tK0qrD8JCVBIrfAK6rAu/H9Q/T9Ms4K6w4o5qA9d2eS7cXt1cHAxJl/lfuVIWnQ6N2a5gbGBkBK4I/a6WQOQ=="/>
+                                <div class='row'>
+                                    <div class='col-md-8'>
+                                        <p class='form-edit-quiz_container__title'>Nome da prova:</p>
+                                        <div class="input string required exam_name">
+                                            <input class="string required form-control" placeholder="Digite o nome da prova" required="required" aria-required="true" type="text" value="dgdg" name="exam[name]" id="exam_name"/>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-4'>
+                                        <p class='form-edit-quiz_container__title'>Porcentagem para aprovação</p>
+                                        <div class="input integer optional exam_passing_percentage">
+                                            <input class="numeric integer optional form-control" min="1" max="100" type="number" step="1" value="50" name="exam[passing_percentage]" id="exam_passing_percentage"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='form-edit-quiz_footer'>
+                                    <label class="checkbox primary" for="check-box-767">
+                                        <input name="exam[is_active]" type="hidden" value="0"/>
+                                        <input id="check-box-767" class="custom-checkbox" data-toggle="checkbox" type="checkbox" value="1" checked="checked" name="exam[is_active]"/>Publicado
+
+                                    </label>
+                                    <input type="submit" name="commit" value="Salvar alterações" class="btn btn-primary green"/>
+                                </div>
+                            </form>
+                        </div>
+                        <div class='form-edit-quiz__title_container'>
+                            <h2>Perguntas e respostas da prova:</h2>
+                            <a class="btn btn-primary green" href="/customer/brand/exams/767/questions/new">Cadastrar nova pergunta
+</a>
+                        </div>
+                        <div class='list-edit-quiz__container'>
+                            <div class='text-center'>Nenhum registro encontrado.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </body>
+</html>
