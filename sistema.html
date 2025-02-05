@@ -250,57 +250,21 @@
       @media (max-width: 660px) {
         /* Estilo do cabeçalho*/
 
-        header {
-          padding: 40px 4%;
+        .btn-alunos {
+          order: 3; /* Coloca o botão depois do menu */
         }
 
-        header > .interface {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        header a {
-          color: #b3b3b3;
-          text-decoration: none;
-          display: inline-block;
-          transition: 0.2s;
-        }
-
-        header a:hover {
-          color: #fff;
-          transform: scale(1.2);
-        }
-
-        header nav ul {
-          list-style-type: none;
-        }
-
-        header nav ul li {
-          display: inline-block;
-          padding: 0 40px;
-        }
-
-        .btn-alunos button {
-          padding: 10px 40px;
-          font-size: 18px;
-          font-weight: 600;
-          background-color: #6baffc;
-          border: 0;
-          border-radius: 30px;
-          cursor: pointer;
-        }
-
-        .btn-alunos button:hover {
-          box-shadow: 0px 0px 8px #0d2eeb;
-        }
-
-        .menu-container{
+        .menu-container {
           display: flex;
           align-content: center;
         }
 
+        .logo {
+          order: 2; /* Coloca o logo depois do menu */
+        }
+
         .menu-desktop {
+          order: 1; /* Coloca o menu antes do logo */
           width: 4rem;
           height: 4rem;
           left: 5rem;
@@ -316,6 +280,12 @@
 
         .menu-toggle {
           display: block;
+          transition: 0.2s;
+        }
+
+        .menu-toggle:hover {
+          color: #fff;
+          transform: scale(1.2);
         }
 
         .menu-items {
@@ -362,6 +332,43 @@
 
         section.sobre .flex {
           flex-direction: column-reverse;
+        }
+      }
+
+      @media (max-width: 460px) {
+        /* Estilo do cabeçalho*/
+        .btn-alunos a button {
+          padding: 10px 10px;
+        }
+
+        /* Estilo do topo do site*/
+        .img-topo-site img {
+          width: 20rem;
+        }
+
+        /* ESTILO DO SOBRE */
+        .img-sobre img {
+          width: 20rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        h2.titulo {
+          font-size: 32px;
+        }
+        /* Estilo do cabeçalho*/
+        .btn-alunos a button {
+          font-size: 15px;
+        }
+
+        /* Estilo do topo do site*/
+        .img-topo-site img {
+          width: 15rem;
+        }
+
+        /* ESTILO DO SOBRE */
+        .img-sobre img {
+          width: 15rem;
         }
       }
     </style>
