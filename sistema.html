@@ -295,6 +295,11 @@
           box-shadow: 0px 0px 8px #0d2eeb;
         }
 
+        .menu-container{
+          display: flex;
+          align-content: center;
+        }
+
         .menu-desktop {
           width: 4rem;
           height: 4rem;
@@ -305,7 +310,7 @@
         .menu-items {
           display: none;
           flex-direction: column;
-          background: #dbdbdb;
+          background: #b3b3b3;
           padding: 2rem;
         }
 
@@ -319,17 +324,27 @@
           position: absolute;
           background: #000;
           width: 100%;
-          top: 60px;
-          left: 0;
+          top: 9rem;
+          border-radius: 2px;
+          font-weight: 600;
         }
+
         .menu-items.show {
           display: flex;
-          background: #dbdbdbc2;
-          width: 10rem;
+          background: #eeeeeee3;
+          width: 7.5rem;
+          height: 12rem;
+          padding: 0rem;
+          cursor: pointer;
+        }
+
+        .menu-items.show a {
+          color: #000;
         }
 
         .main-container {
           margin-left: 0.2rem;
+          padding-left: 1rem;
         }
 
         .main-content a {
@@ -360,34 +375,36 @@
         <!--logo-->
 
         <nav class="menu-desktop">
-          <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div class="menu-items" id="menuItems">
-            <div class="main-container">
-              <div class="main-content">
-                <a href="home.html"> Início </a>
-              </div>
+          <div class="menu-container">
+            <div class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
 
-            <div class="main-container">
-              <div class="main-content">
-                <a href="abasobre.html">Sobre</a>
+            <div class="menu-items" id="menuItems">
+              <div class="main-container">
+                <div class="main-content">
+                  <a href="home.html"> Início </a>
+                </div>
               </div>
-            </div>
 
-            <div class="main-container">
-              <div class="main-content">
-                <a href="abacursos.html">Cursos</a>
+              <div class="main-container">
+                <div class="main-content">
+                  <a href="abasobre.html">Sobre</a>
+                </div>
               </div>
-            </div>
 
-            <div class="main-container">
-              <div class="main-content">
-                <a href="#">Material</a>
+              <div class="main-container">
+                <div class="main-content">
+                  <a href="abacursos.html">Cursos</a>
+                </div>
+              </div>
+
+              <div class="main-container">
+                <div class="main-content">
+                  <a href="#">Material</a>
+                </div>
               </div>
             </div>
           </div>
